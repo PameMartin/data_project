@@ -3,7 +3,7 @@ User.destroy_all
 
 filename = Rails.root.join("db/user_data.csv")
 csv_data = File.read(filename)
-users = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
+users = CSV.parse(csv_data, headers: true, encoding: 'utf-8', col_sep: "\t")
 
 users.each do |user|
   User.create(
