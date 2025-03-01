@@ -1,8 +1,8 @@
 <h2 class="title is-2 m-5">List of Trips</h2>
 <ul class="m-5">
   <% @trips.each do |trip| %>
-    <li>
-      <%= link_to "View Trip to #{trip.destination.name}", trip_path(trip) %>
+    <li>View trips to: 
+      <%= link_to trip.destination.name, trip_path(trip) %>
     </li>
   <% end %>
 </ul>
