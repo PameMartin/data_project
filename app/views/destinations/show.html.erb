@@ -1,2 +1,4 @@
-<h1>Destinations#show</h1>
-<p>Find me in app/views/destinations/show.html.erb</p>
+<h2 class="title is-3"><%= @destination.name%></h2>
+<p><span class="has-text-weight-bold">Location:</span> <%= @destination.location %></p>
+<p><span class="has-text-weight-bold">Description:</span> <%= @destination.description %></p>
+<%= link_to "Back to Destinations", destinations_path %>

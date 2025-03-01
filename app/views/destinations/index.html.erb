@@ -1,2 +1,8 @@
-<h1>Destinations#index</h1>
-<p>Find me in app/views/destinations/index.html.erb</p>
+<h2 class="title is-2 m-5">All Destinations</h1>
+<ul class="m-5">
+  <% @destinations.each do |destination| %>
+    <li>
+      <%= link_to destination.name, destination_path(destination) %>
+    </li>
+  <% end %>
+</ul>
