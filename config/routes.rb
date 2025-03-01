@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "trips/index"
+  get "trips/show"
   get "destinations/index"
   get "destinations/show"
   # root "users#index"
