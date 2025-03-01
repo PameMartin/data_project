@@ -34,7 +34,7 @@ response = image_client.photos.search('destination', page: 1, per_page: 50)
     description: "Welcome to #{city}, a beautiful city located in #{country}, where the culture meets adventure. Explore stunning landmarks, diverse cuisines, and vibrant street life."
   )
 
-  downloaded_image_url = response.photos[index].src["small"]
+  downloaded_image_url = response.photos[index].src["medium"]
   # Descargar la imagen
   downloaded_image = URI.parse(downloaded_image_url).open
 

@@ -2,4 +2,4 @@
 <p><span class="has-text-weight-bold">Location:</span> <%= @destination.location %></p>
 <p><span class="has-text-weight-bold">Description:</span> <%= @destination.description %></p>
 <%= image_tag @destination.image, alt: @destination.name %>
-<%= link_to "Back to Destinations", destinations_path %>
+<%= link_to "Back to Destinations", destinations_path, class: "image is-3by2" %>
