@@ -4,6 +4,7 @@ require "open-uri"
 
 User.destroy_all
 Destination.destroy_all
+Trip.destroy_all
 
 filename = Rails.root.join("db/user_data.csv")
 csv_data = File.read(filename)
@@ -44,6 +45,17 @@ response = image_client.photos.search('destination', page: 1, per_page: 50)
 )
 end
 
+users = User.all
+destinations = Destination.all
+
+50.times do
+  Trip.create(
+    user: users.sample,
+    destination: destinations.sample,
+    travel_date: Faker::Date.forward(days: 365)
+  )
+end
 
 puts "Created #{User.count} users."
 puts "Created #{Destination.count} destinations."
+puts "Created #{Trip.count} trips"
