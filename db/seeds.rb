@@ -21,25 +21,29 @@ users.each do |user|
   )
 end
 
-# image_client = Pexels::Client.new
-# response = image_client.photos.search('destination', page: 1, per_page: 50)
+image_client = Pexels::Client.new
+response = image_client.photos.search('destination', page: 1, per_page: 50)
 
-50.times do
+50.times do |index|
   city = Faker::Address.unique.city
   country = Faker::Address.unique.country
 
-  Destination.create(
+  destination = Destination.create(
     name: city,
     location: country,
     description: "Welcome to #{city}, a beautiful city located in #{country}, where the culture meets adventure. Explore stunning landmarks, diverse cuisines, and vibrant street life."
   )
+
+  downloaded_image_url = response.photos[index].src["small"]
+  # Descargar la imagen
+  downloaded_image = URI.parse(downloaded_image_url).open
+
+  destination.image.attach(
+  io: downloaded_image,
+  filename: "#{destination.name}.jpg"
+)
 end
-# Destination.all.each_with_index do |destination, index|
-#   downloaded_image = URI.parse(response.photos[index].scr["small"]).open
-#   destination.image.attach(
-#     io: downloaded_image,
-#     filename: "#{destination.name}.jpg"
-#   )
-# end
+
+
 puts "Created #{User.count} users."
 puts "Created #{Destination.count} destinations."
