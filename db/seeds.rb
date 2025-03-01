@@ -25,12 +25,13 @@ end
 # response = image_client.photos.search('destination', page: 1, per_page: 50)
 
 50.times do
+  city = Faker::Address.unique.city
+  country = Faker::Address.unique.country
+
   Destination.create(
-    name: Faker::Address.unique.city,
-    location: Faker::Address.unique.country,
-    description: "Welcome to #{Faker::Address.unique.city},
-    a beautiful city located in #{Faker::Address.unique.country},
-    where the culture meets adventure. Explore stunning landmarks, diverse cuisines, and vibrant street life."
+    name: city,
+    location: country,
+    description: "Welcome to #{city}, a beautiful city located in #{country}, where the culture meets adventure. Explore stunning landmarks, diverse cuisines, and vibrant street life."
   )
 end
 # Destination.all.each_with_index do |destination, index|
