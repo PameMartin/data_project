@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "destination/index"
+  get "destination/show"
   root "users#index"
   resources :users, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
