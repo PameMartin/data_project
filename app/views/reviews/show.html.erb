@@ -1,2 +1,9 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<h3>Reviews</h3>
+<ul>
+  <% @trip.reviews.each do |review| %>
+    <li>
+      <strong><%= review.user.first_name %>:</strong> 
+      <%= review.rating %> ⭐ - <%= review.comment %>
+    </li>
+  <% end %>
+</ul>
