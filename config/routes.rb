@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
-  get "reviews/index"
-  get "reviews/show"
-  get "trips/index"
-  get "trips/show"
-  get "destinations/index"
-  get "destinations/show"
   # root "users#index"
   # root "destination#"
   resources :users, only: [ :index, :show ]
   resources :destinations, only: [ :index, :show ]
   resources :trips, only: [ :index, :show ]
+  resources :reviews, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
