@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "reviews/index"
+  get "reviews/show"
   get "trips/index"
   get "trips/show"
   get "destinations/index"
