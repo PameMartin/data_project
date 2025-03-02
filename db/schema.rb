@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_01_023613) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_203520) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_01_023613) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "trip_id", null: false
+    t.index ["trip_id"], name: "index_reviews_on_trip_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.date "travel_date"
     t.datetime "created_at", null: false
@@ -71,6 +82,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_01_023613) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "trips"
+  add_foreign_key "reviews", "users"
   add_foreign_key "trips", "destinations"
   add_foreign_key "trips", "users"
 end
