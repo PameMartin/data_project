@@ -2,9 +2,10 @@ require 'csv'
 require 'faker'
 require "open-uri"
 
-User.destroy_all
-Destination.destroy_all
+Review.destroy_all
 Trip.destroy_all
+Destination.destroy_all
+User.destroy_all
 
 filename = Rails.root.join("db/user_data.csv")
 csv_data = File.read(filename)
@@ -48,14 +49,36 @@ end
 users = User.all
 destinations = Destination.all
 
+# List of adjectives according to the rating
+ADJECTIVES = {
+  1 => %w[terrible awful disappointing horrible frustrating],
+  2 => %w[bad unimpressive mediocre underwhelming forgettable],
+  3 => %w[okay decent average fair neutral],
+  4 => %w[good enjoyable pleasant satisfying great],
+  5 => %w[amazing fantastic incredible unforgettable wonderful]
+}
+
 50.times do
-  Trip.create(
-    user: users.sample,
-    destination: destinations.sample,
+  user = users.sample
+  destination = destinations.sample
+
+  trip = Trip.create!(
+    user: user,
+    destination: destination,
     travel_date: Faker::Date.forward(days: 365)
+  )
+  rating = rand(1..5)
+  adjective = ADJECTIVES[rating].sample
+
+  Review.create!(
+    user: user,
+    trip: trip,
+    rating: rating,
+    comment: "The trip to #{destination.name} was #{adjective}. #{Faker::Lorem.sentence}."
   )
 end
 
 puts "Created #{User.count} users."
 puts "Created #{Destination.count} destinations."
 puts "Created #{Trip.count} trips"
+puts "Created #{Review.count} reviews"
