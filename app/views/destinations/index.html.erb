@@ -1,8 +1,10 @@
-<h2 class="title is-2 m-5">All Destinations</h1>
-<ul class="m-5">
-  <% @destinations.each do |destination| %>
-    <li>
-      <%= link_to destination.name, destination_path(destination) %>
-    </li>
-  <% end %>
-</ul>
+<h2 class="title is-4 m-5"> 🌍 Enjoy all our destinations</h1>
+<div class="box">
+  <ol class="m-5">
+    <% @destinations.each do |destination| %>
+      <li>
+        <%= link_to destination.name, destination_path(destination) %> - <%= destination.location%>
+      </li>
+    <% end %>
+</ol>
+</div>
