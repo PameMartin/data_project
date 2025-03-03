@@ -1,2 +1,9 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<div class="box">
+    <p><strong>Review for trip to: </strong><%= @review.trip.destination.name %></p> 
+    <p><strong>Rating: </strong><%= @review.rating %> ⭐</p>
+    <p><strong>Comment: </strong><%= @review.comment %></p>
+    <p>
+        <strong>User: </strong><%= "#{@review.user.first_name} #{@review.user.last_name}" %></p>
+  </div>
+
+  <%= link_to "All reviews", reviews_path, class: "button is-link mt-4 m-5" %>

@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @trip = Trip.find(params[:trip_id])
-    @review = @trip.review.find(params[:id])
+    @review = Review.find(params[:id])
   end
 end
