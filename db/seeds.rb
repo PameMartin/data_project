@@ -58,24 +58,26 @@ ADJECTIVES = {
   5 => %w[amazing fantastic incredible unforgettable wonderful]
 }
 
-50.times do
-  user = users.sample
-  destination = destinations.sample
+destinations.each do |destination|
+  rand(3..7).times do
+    trip = Trip.create!(
+      user: users.sample,
+      destination: destination,
+      travel_date: Faker::Date.forward(days: 365)
+    )
 
-  trip = Trip.create!(
-    user: user,
-    destination: destination,
-    travel_date: Faker::Date.forward(days: 365)
-  )
-  rating = rand(1..5)
-  adjective = ADJECTIVES[rating].sample
+    rand(2..5).times do
+      rating = rand(1..5)
+      adjective = ADJECTIVES[rating].sample
 
-  Review.create!(
-    user: user,
-    trip: trip,
-    rating: rating,
-    comment: "The trip to #{destination.name} was #{adjective}. #{Faker::Lorem.sentence}."
-  )
+      Review.create!(
+        user: users.sample,
+        trip: trip,
+        rating: rating,
+        comment: "The trip to #{destination.name} was #{adjective}. #{Faker::Lorem.sentence}."
+      )
+    end
+  end
 end
 
 puts "Created #{User.count} users."
