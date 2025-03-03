@@ -2,7 +2,7 @@
 <div class="columns box m-5">
     <div class="column">
         <h3 class="title is-5">🌍 Top 10 Most Chosen Destinations</h3>
-        <ol>
+        <ol class="ml-5">
             <% @trips.each do |destination| %>
                 <li>
                     <strong><%= link_to destination.name, destination %></strong> - <%= destination.location %>
@@ -13,7 +13,7 @@
     </div>
     <div class="column">
         <h3 class="title is-5">⭐ Top 10 Reviews</h3>
-        <ol>
+        <ol class="ml-5">
             <% @reviews.each do |review| %>
                 <li>
                     <strong><%= link_to review.trip.destination.name, review %></strong> 
