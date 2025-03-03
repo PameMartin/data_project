@@ -1,9 +1,18 @@
-<h1>All Reviews</h1>
-  <ol class="ml-5">
+<h2 class="title is-4 ml-5">All Reviews</h2>
+<div class="box m-5">
     <% @reviews.each do |review| %>
-      <li>
-        <strong><%= link_to review.trip.destination.name, review %></strong> 
-          - Rated: <%= review.rating %> ⭐
-      </li>
+      <div class="m-5">
+        <h3><strong>City:</strong> <%= link_to review.trip.destination.name, review_path(review) %></h3>
+        <p>
+          <strong>Rated:</strong> <%= review.rating %> ⭐
+        </p>
+        <p>
+          <strong>by:</strong> <%= review.user.first_name %> <%= review.user.last_name%> ⭐
+        </p>
+        <p>
+          <em>"<%= truncate(review.comment, length: 100) %>"</em>
+        </p>
+        <%= link_to "Read More", review_path(review), class: "btn btn-primary" %>
+      </div>
     <% end %>
-  </ol>
+</div>
