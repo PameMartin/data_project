@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.order(rating: :desc)
+    @reviews = Review.includes(:user, trip: :destination)
+                     .order(rating: :desc)
   end
 
   def show
-    @review = Review.find(params[:id])
+    @review = Review.includes(:user, trip: :destination)
+                    .find(params[:id])
   end
 end
