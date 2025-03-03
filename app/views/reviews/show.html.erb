@@ -1,9 +1,24 @@
+<h1 class="title is-5 m-5">Review Details</h1>
 <div class="box">
-    <p><strong>Review for trip to: </strong><%= @review.trip.destination.name %></p> 
-    <p><strong>Rating: </strong><%= @review.rating %> ⭐</p>
-    <p><strong>Comment: </strong><%= @review.comment %></p>
-    <p>
-        <strong>User: </strong><%= "#{@review.user.first_name} #{@review.user.last_name}" %></p>
-  </div>
+    <div class="m-5">
+    <h2><strong>Review for:</strong> <%= link_to @review.trip.destination.name, destination_path(@review.trip.destination) %></h2>
+    <p><strong>Rating:</strong> <%= @review.rating %> ⭐</p>
+    <p><strong>Comment:</strong> <em>"<%= @review.comment %>"</em></p>
+    <p><strong>Reviewed on:</strong> <%= @review.created_at.strftime("%B %d, %Y") %></p>
+    </div>
 
-  <%= link_to "All reviews", reviews_path, class: "button is-link mt-4 m-5" %>
+    <div class="m-5">
+    <p><strong>Reviewer</strong></p>
+    <p><strong>Name:</strong> <%= @review.user.first_name %> <%= @review.user.last_name %></p>
+    <p><strong>Email:</strong> <%= @review.user.email %></p>
+    </div>
+
+    <div class="m-5">
+    <p><strong>Trip Details</strong></p>
+    <p><strong>Destination:</strong> <%= @review.trip.destination.name %></p>
+    <p><strong>Start Date:</strong> <%= @review.trip.travel_date.strftime("%B %d, %Y") %></p>
+    </div>
+
+</div>
+
+<%= link_to "Back to Reviews", reviews_path, class: "m-5 button is-link" %>
