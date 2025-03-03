@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get "home/index"
-  # root "users#index"
+  root "home#index"
   # root "destination#"
   resources :users, only: [ :index, :show ]
   resources :destinations, only: [ :index, :show ]
