@@ -1,2 +1,26 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<div class="columns box m-5">
+    <div class="column">
+        <h3 class="title is-5">🌍 Top 10 Most Chosen Destinations</h3>
+        <ol>
+            <% @trips.each do |destination| %>
+                <li>
+                    <strong><%= link_to destination.name, destination %></strong> - <%= destination.location %>
+                </li>
+            <% end %>
+        </ol>
+        <%= link_to "👉 See all destinations", destinations_path %>
+    </div>
+    <div class="column">
+        <h3 class="title is-5">⭐ Top 10 Reviews</h3>
+        <ol>
+            <% @reviews.each do |review| %>
+                <li>
+                    <strong><%= link_to review.trip.destination.name, review %></strong> 
+                     - Rated: <%= review.rating %> ⭐
+                </li>
+            <% end %>
+        </ol>
+        <%= link_to "👉 See all reviews", reviews_path  %>
+    </div>
+</div>
