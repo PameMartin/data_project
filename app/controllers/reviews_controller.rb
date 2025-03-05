@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.includes(:user, trip: :destination)
-                     .order(rating: :desc)
+                      .order(rating: :desc)
   end
 
   def show

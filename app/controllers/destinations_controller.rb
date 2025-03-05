@@ -1,9 +1,6 @@
 class DestinationsController < ApplicationController
   def index
-    @destinations = Destination
-                              .joins(:trips)
-                              .group("destinations.id")
-                              .order("COUNT(trips.id) DESC")
+    @destinations = Destination.ordered_by_trip_count
   end
 
   def show

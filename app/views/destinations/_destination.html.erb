@@ -1,6 +1,6 @@
 <div class="box m-5">
     <% if show_link %>
-        <h2 class="title is-3 m-5"><%= link_to destination.name, destination%></h2>
+        <h2 class="title is-3 m-5"><%= link_to destination.name, destination%> <em>(<%= pluralize destination.trip_count, "visit" %>)</em></h2>
     <% else %>
         <h2 class="title is-3 m-5"><%= destination.name%></h2>
     <% end %>
