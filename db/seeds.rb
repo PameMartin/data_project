@@ -6,6 +6,19 @@ Review.destroy_all
 Trip.destroy_all
 Destination.destroy_all
 User.destroy_all
+Page.destroy_all
+
+Page.create(
+  title: "About",
+  content: "All the information about the Data Project",
+  permalink: "about"
+)
+
+Page.create(
+  title: "Contact Us",
+  content: "Email me at pmartin3@academic.rrc.ca",
+  permalink: "contact"
+)
 
 filename = Rails.root.join("db/user_data.csv")
 csv_data = File.read(filename)
@@ -84,3 +97,4 @@ puts "Created #{User.count} users."
 puts "Created #{Destination.count} destinations."
 puts "Created #{Trip.count} trips"
 puts "Created #{Review.count} reviews"
+puts "Created #{Page.count} pages"
