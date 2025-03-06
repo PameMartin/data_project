@@ -3,7 +3,7 @@
 <h2 class="title is-2 m-5"><%= @page.title %></h2>
 <p class="m-5"><%= @page.content %></p>
 <div class="m-5">
-  <%= link_to "Edit this page", edit_page_path(@page), class: "button is-warning" %>
+  <%= link_to "Edit this page", edit_page_path(@page), class: "button is-warning" %> 
   <%= link_to "Back to pages", pages_path, class: "button is-link" %>
 
   <%= button_to "Destroy this page", @page, method: :delete, class: "button is-danger mt-5 mb-5" %>
