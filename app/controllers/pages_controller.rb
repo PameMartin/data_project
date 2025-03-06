@@ -10,6 +10,10 @@ class PagesController < ApplicationController
   def show
   end
 
+  def permalink
+    @page = Page.find_by(permalink: params[:permalink])
+  end
+
   # GET /pages/new
   def new
     @page = Page.new
