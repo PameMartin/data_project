@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pages
   root "home#index"
   # root "destination#"
   resources :users, only: [ :index, :show ]

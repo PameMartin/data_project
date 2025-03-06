@@ -15,4 +15,8 @@
     <p class="m-5">
         <%= image_tag destination.image, alt: destination.name %>
     </p>
+    <% unless show_link %> 
+        <%= link_to "Back to destinations", destinations_path, class: "button is-link" %>
+    <% end %>
+    
 </div>
