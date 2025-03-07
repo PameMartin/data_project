@@ -1,4 +1,11 @@
 <h2 class="title is-4 ml-5">All Reviews</h2>
+<div class="m-5">
+  <%= form_with url: reviews_path, method: :get, local: true do |form| %>
+    <%= form.text_field :query, placeholder: "Search by city...", class: "input mb-3" %>
+    <%= form.submit "Search", class: "button is-primary" %>
+<% end %>
+</div>
+
 <div class="box m-5">
     <% @reviews.each do |review| %>
       <div class="m-5">
